@@ -1,0 +1,32 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer
+    [(opened)]="isDrawerOpen"
+    #drawer
+    class="example-sidenav"
+    mode="side"
+  >
+    <div class="example-sidenav-content">
+      <p>
+        <mat-list>
+          <mat-list-item> {{ "hamza iqbal" | capitalize }} </mat-list-item>
+          <mat-list-item>
+            {{ "users" | capitalize }}
+          </mat-list-item>
+          <mat-list-item>
+            {{ "logout" | capitalize }}
+          </mat-list-item>
+        </mat-list>
+      </p>
+    </div>
+  </mat-drawer>
+  <app-header (newItemEvent)="toggleDrawer()" [title]="title"></app-header>
+  <mat-grid-list cols="2" rowHeight="4:1.8">
+    <mat-grid-tile>Grid 1</mat-grid-tile>
+    <mat-grid-tile>Grid 2</mat-grid-tile>
+    <mat-grid-tile>Grid 3</mat-grid-tile>
+    <mat-grid-tile>{{
+      "2021-06-22T05:00:00" | toDate: "DD-MM-YYYY"
+    }}</mat-grid-tile>
+  </mat-grid-list>
+  <app-footer></app-footer>
+</mat-drawer-container>
