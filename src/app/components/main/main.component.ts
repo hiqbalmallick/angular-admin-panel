@@ -16,6 +16,16 @@ export class MainComponent {
   };
 
   onSubmit = (v: NgForm) => {
-    console.log(`v`, v);
+    if (v.form.status) {
+      const data: any[] =
+        JSON.parse(localStorage.getItem('userList') as string) || [];
+      const {
+        form: {
+          value: { position, name, weight, symbol },
+        },
+      } = v;
+      data.push({ position, name, weight, symbol });
+      localStorage.setItem('userList', JSON.stringify(data));
+    }
   };
 }

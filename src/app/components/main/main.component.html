@@ -9,12 +9,14 @@
       <p>
         <mat-list>
           <mat-list-item>
+            <a [routerLink]="['/dashboard']">
+              {{ "dashboard" | capitalize }}
+            </a>
+          </mat-list-item>
+          <mat-list-item>
             <a [routerLink]="['/users']">
               {{ "users" | capitalize }}
-            </a></mat-list-item
-          >
-          <mat-list-item>
-            {{ "users" | capitalize }}
+            </a>
           </mat-list-item>
           <mat-list-item>
             {{ "logout" | capitalize }}
@@ -27,8 +29,10 @@
   <mat-grid-list cols="2" rowHeight="4:1.8">
     <mat-grid-tile>
       <form (ngSubmit)="onSubmit(formValues)" #formValues="ngForm">
-        <input type="email" ngModel name="email" required />
-        <input type="password" ngModel name="password" required />
+        <input type="name" ngModel name="name" required />
+        <input type="number" ngModel name="position" required />
+        <input type="name" ngModel name="weight" required />
+        <input type="name" ngModel name="symbol" required />
         <input type="submit" />
       </form>
     </mat-grid-tile>

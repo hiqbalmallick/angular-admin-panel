@@ -15,12 +15,6 @@ export interface PeriodicElement {
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-  // constructor(
-  //   public displayedColumns: string[],
-  //   public dataSource: PeriodicElement[]
-  // ) {
-  //   this.displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  // }
   title = 'Admin Panel';
   isDrawerOpen = false;
   date = new Date('DD-MM-YYYY');
@@ -28,8 +22,7 @@ export class UsersComponent implements OnInit {
   dataSource: PeriodicElement[] = [];
 
   ngOnInit() {
-    // localStorage.setItem('userList', JSON.stringify(ELEMENT_DATA));
-    const data = JSON.parse(localStorage.getItem('userList') as string);
+    const data = JSON.parse(localStorage.getItem('userList') as string) || [];
     this.dataSource = [...data];
   }
 
@@ -40,16 +33,4 @@ export class UsersComponent implements OnInit {
   onSubmit = (v: NgForm) => {
     console.log(`v`, v);
   };
-  // @ViewChild(MatTable) table: MatTable<PeriodicElement>;
-
-  // addData() {
-  //   const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-  //   this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
-  //   this.table.renderRows();
-  // }
-
-  // removeData() {
-  //   this.dataSource.pop();
-  //   this.table.renderRows();
-  // }
 }
