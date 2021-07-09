@@ -16,7 +16,7 @@ export class MainComponent {
   };
 
   onSubmit = (v: NgForm) => {
-    if (v.form.status) {
+    if (v.form.status === 'VALID') {
       const data: any[] =
         JSON.parse(localStorage.getItem('userList') as string) || [];
       const {
