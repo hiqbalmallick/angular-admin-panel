@@ -29,10 +29,10 @@
   <mat-grid-list cols="2" rowHeight="4:1.8">
     <mat-grid-tile>
       <form (ngSubmit)="onSubmit(formValues)" #formValues="ngForm">
-        <input type="name" ngModel name="name" required />
-        <input type="number" ngModel name="position" required />
-        <input type="name" ngModel name="weight" required />
-        <input type="name" ngModel name="symbol" required />
+        <input type="email" ngModel name="email" required />
+        <input type="text" ngModel name="website" required />
+        <input type="text" ngModel name="name" required />
+        <input type="text" ngModel name="phone" required />
         <input type="submit" />
       </form>
     </mat-grid-tile>

@@ -19,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularMaterialModule } from './angular-material.module';
 import { UsersComponent } from './components/users/users.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import { UserInterceptor } from './Interceptor/user.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,8 +48,11 @@ import { MatTableModule } from '@angular/material/table';
     FlexLayoutModule,
     AngularMaterialModule,
     MatTableModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: UserInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -1,12 +1,13 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatTable } from '@angular/material/table';
+import { UserService } from 'src/app/service/user.service';
 
 export interface PeriodicElement {
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  email: string;
+  phone: number;
+  website: string;
 }
 
 @Component({
@@ -21,9 +22,10 @@ export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource: PeriodicElement[] = [];
 
+  constructor(private userService: UserService) {}
+
   ngOnInit() {
-    const data = JSON.parse(localStorage.getItem('userList') as string) || [];
-    this.dataSource = [...data];
+    this.getAllUsers();
   }
 
   toggleDrawer = () => {
@@ -32,5 +34,17 @@ export class UsersComponent implements OnInit {
 
   onSubmit = (v: NgForm) => {
     console.log(`v`, v);
+  };
+
+  getAllUsers = async () => {
+    await this.userService
+      .getAllUsers()
+      .subscribe((data: PeriodicElement[]) => {
+        this.dataSource = [...data];
+      });
+  };
+
+  setSelectedUser = (item: PeriodicElement) => {
+    this.userService.selectedUser(item);
   };
 }

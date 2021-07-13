@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { UserService } from '../../service/user.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,9 +9,12 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Input() title = '';
   @Output() newItemEvent = new EventEmitter<string>();
-  constructor() {}
+  constructor(public userService: UserService) {
+    this.userService.selectedUserSubject.subscribe();
+  }
   handleDrawer = () => {
     this.newItemEvent.emit();
   };
+
   ngOnInit(): void {}
 }

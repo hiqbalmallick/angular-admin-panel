@@ -8,7 +8,14 @@
     >
       <mat-icon>menu</mat-icon>
     </button>
-    <span class="example-span">{{ title }}</span>
+    <a [routerLink]="['/dashboard']" class="example-span">
+      <span
+        *ngIf="userService.selectedUserSubject | async as user$; else title"
+        >{{ user$.name }}</span
+      >
+      <ng-template #user$>{{ user$.name }</ng-template>
+      <ng-template #title>Admin Panel</ng-template>
+    </a>
     <span class="example-spacer"></span>
     <button
       mat-icon-button
@@ -26,4 +33,3 @@
     </button>
   </mat-toolbar>
 </p>
-<!-- (click)="isDrawerOpen = !isDrawerOpen" -->
