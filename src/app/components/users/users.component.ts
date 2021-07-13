@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 
 export interface PeriodicElement {
@@ -22,7 +23,7 @@ export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource: PeriodicElement[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
     this.getAllUsers();
@@ -46,5 +47,9 @@ export class UsersComponent implements OnInit {
 
   setSelectedUser = (item: PeriodicElement) => {
     this.userService.selectedUser(item);
+  };
+  logOut = () => {
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   };
 }

@@ -18,7 +18,7 @@
               {{ "users" | capitalize }}
             </a>
           </mat-list-item>
-          <mat-list-item>
+          <mat-list-item (click)='logOut()'>
             {{ "logout" | capitalize }}
           </mat-list-item>
         </mat-list>
@@ -26,7 +26,7 @@
     </div>
   </mat-drawer>
   <app-header (newItemEvent)="toggleDrawer()" [title]="title"></app-header>
-  <mat-grid-list cols="2" rowHeight="4:1.8">
+  <mat-grid-list class="main-container" cols="2" rowHeight="4:1.8">
     <mat-grid-tile>
       <form (ngSubmit)="onSubmit(formValues)" #formValues="ngForm">
         <input type="email" ngModel name="email" required />
