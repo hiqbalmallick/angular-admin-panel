@@ -22,6 +22,7 @@ import { UsersComponent } from './components/users/users.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { UserInterceptor } from './Interceptor/user.interceptor';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { UserInterceptor } from './Interceptor/user.interceptor';
     MainComponent,
     NotFoundComponent,
     UsersComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

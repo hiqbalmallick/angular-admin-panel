@@ -12,27 +12,10 @@ export class MainComponent {
   title = 'Admin Panel';
   isDrawerOpen = false;
   date = new Date('DD-MM-YYYY');
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private router: Router) {}
 
   toggleDrawer = () => {
     this.isDrawerOpen = !this.isDrawerOpen;
-  };
-
-  onSubmit = (v: NgForm) => {
-    if (v.form.status === 'VALID') {
-      const data: any[] =
-        JSON.parse(localStorage.getItem('userList') as string) || [];
-      const {
-        form: {
-          value: { email, name, phone, website },
-        },
-      } = v;
-      const user = { email, name, phone, website };
-      this.httpClient
-        .post(`https://jsonplaceholder.typicode.com/users`, user)
-        .subscribe((data: any) => {});
-      localStorage.setItem('userList', JSON.stringify(data));
-    }
   };
 
   logOut = () => {
