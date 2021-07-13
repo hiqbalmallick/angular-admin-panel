@@ -18,7 +18,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularMaterialModule } from './angular-material.module';
-import { LoginComponent } from './components/login/login.component';
 import { UsersComponent } from './components/users/users.component';
 import { MatTableModule } from '@angular/material/table';
 @NgModule({
@@ -30,7 +29,6 @@ import { MatTableModule } from '@angular/material/table';
     CapitalizePipe,
     MainComponent,
     NotFoundComponent,
-    LoginComponent,
     UsersComponent,
   ],
   imports: [
